@@ -13,51 +13,37 @@ def user_input
   print "What can't you use your phone to calculate?
   "
   input = gets.chomp
-
   @input = input.split(" ")
-  # puts # Diag only
-  #  print input   # for diag only
   return @input # input is array at this point
 end
 
 def valid(arr)
   # iterate through array,
 
-  # if arr.join("").split("").include?(('a'.upto('z').to_a))
-  #    puts "got here"
-  #    return false
-  #  end
+  #CHECK FOR LETTER
+  z = 1
+  unless /[a-z]/.match(arr.join(''))
+    z = 0
+  end
+  if z == 1
+    error
+    return false
+  elsif z == 0
+  end
 
-  # puts "letters = #{letters}" #diag
-  # if letters.include?(('a'.upto('z')))
-  #   puts "got in here"
-  # end
-  #
-  # idx = 0
-  # while arr.length > idx
-  #   puts "arr[idx] = #{arr[idx]}" # diag
-  #
-  #   if arr[idx].include?(('a'.upto('z').to_a))  #|| arr[idx].include? ['A'..'Z']
-  #     puts " Found letter"  # diag
-  #     return false
-  #     break
-  #   end
-  #   idx += 1
-  # end
   #Is there an operator present
   x = 0
   while arr.length > x
     if @operators.include?(arr[x])
-      puts 'found an operator' #diag
-      puts "#{arr[x]}"#diag
+      #puts 'found an operator' #diag
+      #puts "#{arr[x]}"#diag
 
       if arr[x - 1].to_f.is_a?(Numeric) && arr[x + 1].to_f.is_a?(Numeric)
-        puts "#{arr[x - 1]} and #{arr[x + 1]}" # diag
+        #puts "#{arr[x - 1]} and #{arr[x + 1]}" # diag
       else
-        puts " #{return false} " # diag
+        #puts " #{return false} " # diag
         return false
       end
-
     end
     x += 1
   end
@@ -70,11 +56,10 @@ def valid(arr)
 end
 
 def extract
-  @n1 = @input[0]
-  @n2 = @input[2]
+  @n1 = @input[0].to_f
+  @n2 = @input[2].to_f
   @op = @input[1]
 end
-
 
 def compute
   if @op == '+'
@@ -90,7 +75,7 @@ def compute
     #puts 'multiplication' diag
     @answer = @n1 * @n2
   end
-  puts "#{@answer}"
+  puts "  ------\n  #{@answer}"
 end
 
 def error
