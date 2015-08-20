@@ -5,7 +5,7 @@ def welcome
   I am a calculator.
   Spacing is important....   Figure it out...
   La ti flipping da...
-    
+
   "
 end
 
@@ -13,21 +13,21 @@ def user_input
   print "What can't you use your phone to calculate?
   "
   input = gets.chomp
-  
-  input = input.split(" ")
+
+  @input = input.split(" ")
   # puts # Diag only
   #  print input   # for diag only
-  return input
+  return @input # input is array at this point
 end
 
 def valid(arr)
   # iterate through array,
- 
+
   # if arr.join("").split("").include?(('a'.upto('z').to_a))
   #    puts "got here"
   #    return false
   #  end
-  
+
   # puts "letters = #{letters}" #diag
   # if letters.include?(('a'.upto('z')))
   #   puts "got in here"
@@ -62,15 +62,35 @@ def valid(arr)
     x += 1
   end
 
-  
+
   # Take user_input
   # Verify it is a normal math problem
-  # Return true if valid, 
+  # Return true if valid,
   return true
 end
 
+def extract
+  @n1 = @input[0]
+  @n2 = @input[2]
+  @op = @input[1]
+end
+
+
 def compute
-  if @operators.include?()      # Stopping point, We were here....
+  if @op == '+'
+    #puts "addition" diag
+    @answer = @n1 + @n2
+  elsif @op == '-'
+    #puts "subtraction" diag
+    @answer = @n1 - @n2
+  elsif @op == '/'
+    #puts 'division' diag
+    @answer = @n1 / @n2
+  elsif @op == '*'
+    #puts 'multiplication' diag
+    @answer = @n1 * @n2
+  end
+  puts "#{@answer}"
 end
 
 def error
@@ -78,7 +98,7 @@ def error
 end
 
 def output
-  if validate == false
+  if valid == false
     return error
   else compute
   end
@@ -87,14 +107,15 @@ end
 
 def calc
   welcome
-  
+
   if valid(user_input)
+    extract
     compute
-  else 
+  else
     error
     calc
   end
-  
+
   # Welcome message
   # Get user input to calculate
   # Validate user input
