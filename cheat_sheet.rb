@@ -1,3 +1,4 @@
+require 'pry'
 # Open to main menu
 def main_menu
   puts "Cheat Sheet:\n\t0. Quit\n\t1. Command Line\n\t2. Vim\n\t3. Search\nChoose an Option: "
