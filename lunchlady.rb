@@ -27,6 +27,7 @@ def item_choice(type)
   @menu[type].length.times do |item|
     puts "#{@menu[type].keys[item]}: #{@menu[type].values[item][0]}, $#{@menu[type].values[item][1]}"
   end
+  puts "\n"
   gets.chomp
 end
 

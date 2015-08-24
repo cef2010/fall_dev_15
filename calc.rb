@@ -2,16 +2,14 @@
 
 def welcome
   print "
-  I am a calculator.
-  Spacing is important....   Figure it out...
-  La ti flipping da...
+  Enter the equation you would like to calculate,
+  remember to use spaces between your operator and numbers.
 
   "
 end
 
 def user_input
-  print "What can't you use your phone to calculate?
-  "
+  print ""
   input = gets.chomp
   @input = input.split(" ")
   return @input # input is array at this point
@@ -26,7 +24,6 @@ def valid(arr)
     z = 0
   end
   if z == 1
-    error
     return false
   elsif z == 0
   end
