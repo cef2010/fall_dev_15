@@ -75,14 +75,15 @@ def vim_menu
     puts "\t#{vim[(choice + 1).to_s].join(' - ')}"
   end
   puts "\tPress 'm' for VIM documentation."
-  input = gets.to_i
-  if input == 0
-    main_menu
-  elsif input == 'm'
+  input = gets.chomp
+  if input == 'm'
     puts `man vim`
+    vim_menu
+  elsif input == '0'
     main_menu
   else
     puts "I'm sorry, I didn't quite get that."
+    vim_menu
   end
 end
 
