@@ -16,9 +16,15 @@ end
 
 def compare(str_arr)
   high = []
+  count = 2
   str_arr.each do |str|
-    if letter_count(str) > 1
+    if letter_count(str) == count
       high << str
+      count = letter_count(str)
+    elsif letter_count(str) > count
+      high = []
+      high << str
+      count = letter_count(str)
     end
   end
   return high
@@ -34,9 +40,7 @@ def program
     puts "The word with the most repeating characters is: #{output[0]}"
   else
     puts "Multiple words had the same number of repeating characters: "
-    output.each do |word|
-      puts word
-    end
+    output.each { |word| puts word }
   end
 end
 
